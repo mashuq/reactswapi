@@ -1,5 +1,8 @@
 let starshipSate = {
-    list: [] 
+    list: [],
+    showForm: false,
+    loading: true, 
+    loadError: false, 
 }
 
 export default starshipSate;

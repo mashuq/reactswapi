@@ -1,22 +1,6 @@
-import {loadList} from './starshipActions';
+import {loadList, loadListError, saveStarship} from './starshipActions';
 
-// const loadStarships = () => {
-// //    return loadList([3,4,5,6]);
-//         fetch('https://swapi.co/api/starships/')
-//         .then(res => res.json())
-//         .then(res => {
-//             if(res.error) {
-//                 throw(res.error);
-//             }
-//             console.log(res.results);
-//             return loadList(res.results);
-//         })
-//         .catch(error => {
-//             console.log(error);
-//         })        
-// }
-
-function loadStarships() {
+export const loadStarships = () => {
     return dispatch => {
         //dispatch(fetchProductsPending());
         fetch('https://swapi.co/api/starships')
@@ -30,9 +14,14 @@ function loadStarships() {
         })
         .catch(error => {
             console.log(error);
-            //dispatch(fetchProductsError(error));
+            dispatch(loadListError());
         })
     }
 }
 
-export default loadStarships;
+
+export const storeStarship = (payload) => {
+    return dispatch => {
+        dispatch(saveStarship(payload));
+    }
+}
